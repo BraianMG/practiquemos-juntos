@@ -39,7 +39,7 @@ h1{
     background-color: #004aad;
 }
 
-.box3-4{
+.container-box{
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -49,12 +49,6 @@ h1{
     height: 325px;
     width: 350px;
     background-color: #FF914D;
-}
-
-.box5-6, .box7-8{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
 }
 
 .box5, .box6, .box7, .box8{
