@@ -6,3 +6,5 @@ Siempre eres libre de agregarle cualquier otra cosita extra que veas que aporten
 ## Ejercicios
 1. [Cajas](./01-cajas/readme.md)
 2. [Card](./02-card/readme.md)
+3. [Cajas responsive](./03-cajas-responsive/readme.md)
+4. [Cards responsive](./04-cards-responsive/readme.md)
