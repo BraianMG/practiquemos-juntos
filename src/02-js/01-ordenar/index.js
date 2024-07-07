@@ -1,5 +1,5 @@
 // CASO 1
-/*function caseOne(){
+function caseOne(){
     console.log("~~ Case 1 ~~");
 
     // Con order="ASC" hago que el argumento order sea opcional y en el caso que no se indique por defecto será "ASC"
@@ -32,10 +32,10 @@
     console.log('outputAsc', outputAsc);
     console.log('outputDesc', outputDesc);
 }
-caseOne();*/
+caseOne();
 
 // CASO 2
-/*function caseTwo(){
+function caseTwo(){
     console.log("~~ Case 2 ~~");
 
     function customSort(entry, order="ASC"){
@@ -60,101 +60,85 @@ caseOne();*/
     console.log('orderAscending', orderAscending);
     console.log('orderDescending', orderDescending);
 };
-caseTwo();*/
-
-
-
-
+caseTwo();
 
 // CASO 3
-/*const entryObj = [
-    { name: 'Antonio', age: 30, description: '' },
-    { name: 'David', age: 24, description: 'asd' },
-    { name: 'Fernando', age: undefined, description: 'no tenemos la edad' },
-    { name: 'Monica', age: 45, description: '45' },
-    { name: 'Cristina', age: 28, description: null },
-];*/
+function caseThree(){
+    console.log("~~ Case 3 ~~");
 
-/*function forName(a,b){
-    if (a.name > b.name){
-        return 1;
+    function sortByKey(array, key, order) {
+        // 1. extraer los null y los undefined
+        // 2. ordenar el array sin los null y los undefined
+        // 3. al array ordenado agregarle al final los null y los undefined
+
+        const withInvalidValue = [];
+        const withValidValue = [];
+
+        for (let i = 0; i < array.length; i++) {
+            const element = array[i];
+            
+            if (element[key] === null || element[key] === undefined) {
+                withInvalidValue.push(element);
+            } else {
+                withValidValue.push(element);
+            }
+        }
+
+        withValidValue.sort((a, b) => {
+            // Manejo de valores nulos, undefined y strings vacíos
+            let aValue = a[key];
+            let bValue = b[key];
+
+            // Orden ascendente o descendente
+            if (order.toLowerCase() === 'asc') {
+                if (aValue < bValue) return -1;
+                if (aValue > bValue) return 1;
+                return 0;
+            } else if (order.toLowerCase() === 'desc') {
+                if (aValue > bValue) return -1;
+                if (aValue < bValue) return 1;
+                return 0;
+            }
+        });
+
+        if (order.toLowerCase() === 'asc'){
+            return withValidValue.concat(withInvalidValue);
+        } else if (order.toLowerCase() === 'desc'){
+            return withInvalidValue.reverse().concat(withValidValue);
+        }
     }
-    if (a.name < b.name){
-        return -1;
-    }
-    return 0;
+
+
+    const entry = [
+        { name: 'Antonio', age: 30, description: '' },
+        { name: 'David', age: 24, description: 'asd' },
+        { name: 'Fernando', age: undefined, description: 'no tenemos la edad' },
+        { name: 'Monica', age: 45, description: '45' },
+        { name: 'Cristina', age: 28, description: null },
+        { name: 'Eva', age: 16, description: 'muy alta' },
+        { name: 'Juan', age: 10, description: 'se enoja fácilmente' },
+        { name: 'Tom', age: 80, description: 'muy amable' },
+        { name: 'Ana', age: 36, description: undefined },
+        { name: 'Luz', age: 90, description: undefined }
+    ];
+
+    const orderByNameAsc = sortByKey(entry, 'name', 'asc');
+    const orderByNameDesc = sortByKey(entry, 'name', 'desc');
+
+    const orderByAgeAsc = sortByKey(entry, 'age', 'asc');
+    const orderByAgeDesc = sortByKey(entry, 'age', 'desc');
+
+    const orderByDescriptionAsc = sortByKey(entry, 'description', 'asc');
+    const orderByDescriptionDesc = sortByKey(entry, 'description', 'desc');
+
+    console.log('entry', entry);
+    console.log('orderByNameAsc', orderByNameAsc);
+    console.log('orderByNameDesc', orderByNameDesc);
+    
+    console.log('orderByAgeAsc', orderByAgeAsc);
+    console.log('orderByAgeDesc', orderByAgeDesc);
+    
+    console.log('orderByDescriptionAsc', orderByDescriptionAsc);
+    console.log('orderByDescriptionDesc', orderByDescriptionDesc);
 }
-
-console.log("Name",entryObj);
-console.log("Name Asc",entryObj.sort(forName));
-console.log("Name Des",entryObj.sort(forName).reverse());*/
-
-
-/*function forAge (a, b) {
-    if (a.age > b.age){
-        return 1;
-    }
-    if (a.age < b.age){
-        return -1;
-    }
-    return 0;
-} ;
-
-console.log('entryObj', entryObj);
-console.log("Asc",entryObj.sort(forAge));
-console.log("Des",entryObj.sort(forAge).reverse());*/
-
-
-/*function forDescription (a, b) {
-    if (a.description > b.description){
-        return 1;
-    }
-    if (a.description < b.description){
-        return -1;
-    }
-    return 0;
-} ;
-console.log("Description",entryObj.sort(forDescription));*/
-
-
-function sortByKey(array, key, order) {
-    return array.sort((a, b) => {
-        // Manejo de valores nulos, undefined y strings vacíos
-        let aValue = a[key];
-        let bValue = b[key];
-
-        // Tratamiento de valores nulos, undefined y strings vacíos
-        if (aValue === null || aValue === undefined || aValue === '') {
-            aValue = Infinity; // Colocar al final en orden ascendente
-        }
-        if (bValue === null || bValue === undefined || bValue === '') {
-            bValue = Infinity; // Colocar al final en orden ascendente
-        }
-
-        // Orden ascendente o descendente
-        if (order === 'asc') {
-            if (aValue < bValue) return -1;
-            if (aValue > bValue) return 1;
-            return 0;
-        } else if (order === 'desc') {
-            if (aValue > bValue) return -1;
-            if (aValue < bValue) return 1;
-            return 0;
-        }
-    });
-}
-
-// Ejemplo de uso:
-let people = [
-    { name: 'Antonio', age: 30, description: '' },
-    { name: 'David', age: 24, description: 'asd' },
-    { name: 'Fernando', age: undefined, description: 'no tenemos la edad' },
-    { name: 'Monica', age: 45, description: '45' },
-    { name: 'Cristina', age: 28, description: null },
-];
-
-console.log("Asc Age", sortByKey(people, 'age', 'asc'));
-console.log("Desc Age", sortByKey(people, 'age', 'desc'));
-
-console.log("Asc Description", sortByKey(people, 'description', 'asc'));
-console.log("Desc Description", sortByKey(people, 'description', 'desc'));
+caseThree();
