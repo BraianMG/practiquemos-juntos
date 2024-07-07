@@ -28,3 +28,7 @@ const entrada = [
   { nombre: 'Cristina', edad: 28, descripcion: null },
 ];
 ```
+
+- Para ejecutar el archivo js: `node nombre-de-archivo.js`
+- Para ir a un archivo: `cd src/02-js/01-ordenar/` 
+- Para ir a otro archivo: `cd ../02-filtrar/` 
