@@ -1,5 +1,9 @@
 # Crear una Pull Request en GitHub
 
+Primero que nada siempre que trabajemos en algo nuevo que querramos agregar, debemos hacerlo sobre una nueva rama partiendo de la principal, para esto nos aseguraremos de que estamos en la rama principal, en este caso `main` y si no lo estmaos vamos a ella haciendo `git checkout main` luego nos aseguramos de tenerla actualizada haciendo `git pull` finalmente crearemos una nueva rama con por ejemplo `git checkout -b prueba-para-pull-request`
+
+Trabajaremos sobre ella y cuando lo tengamos listo, luego de commitear cambios, los pushearemos al repositorio remoto con por ejemplo `git push -u origin prueba-para-pull-request`
+
 Luego de haber pusheado la nueva rama al repositorio remoto iremos al [repo en GitHub](https://github.com/BraianMG/practiquemos-juntos) y daremos clic en la opción `"Pull Requests"`
 
 ![Botón Pull requests](images/boton-pull-requests.png)
